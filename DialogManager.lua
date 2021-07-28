@@ -15,6 +15,7 @@ function DialogManager:new()
 end
 
 function DialogManager:newDialogBox(text, textAnimationDuration)
+    -- creates a dialog box and become the current box
     local dialogBox = {}
 
     dialogBox.boxHeight = math.floor(15*self.windowHeight/100)
@@ -35,6 +36,7 @@ function DialogManager:newDialogBox(text, textAnimationDuration)
 end
 
 function DialogManager:update(dt)
+    -- updates current box animation
     self.currentTime = self.currentTime + dt
     if self.currentTime >= self.currentBox.textAnimationDuration then
         return true
@@ -43,7 +45,7 @@ function DialogManager:update(dt)
 end
 
 function DialogManager:draw()
-    print("bonsoir")
+    -- draws current box if it isn't nil
     if self.currentBox ~= nil then
         local numChar = math.floor(self.currentTime / self.currentBox.textAnimationDuration * #self.currentBox.text) + 1
         local plainText = love.graphics.newText(self.currentBox.font, string.sub(self.currentBox.text, 1, numChar))

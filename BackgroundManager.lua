@@ -9,10 +9,8 @@ function BackgroundManager:new()
 end
 
 function BackgroundManager:set(path)
-    if path ~= self.path then
-        self.path = path
-        self.backgroundImage = love.graphics.newImage(path)
-    end
+    self.path = path
+    self.backgroundImage = love.graphics.newImage(path)
 end
 
 function BackgroundManager:draw()
